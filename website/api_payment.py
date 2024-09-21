@@ -43,7 +43,7 @@ def get_payments():
     return jsonify(payment_list), 200
 
 
-@api_payment.route('/delete', methods=['DELETE'])
+@api_payment.delete('/delete')
 @jwt_required()
 def delete_payment():
     data = request.get_json()
