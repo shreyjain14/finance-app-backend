@@ -41,3 +41,14 @@ def get_payments():
         payment_list.append(payment_data)
 
     return jsonify(payment_list), 200
+
+
+@api_payment.route('/delete/<id>', methods=['DELETE'])
+@jwt_required()
+def delete_payment(id):
+    payment = Payments.query.get(id)
+    if payment:
+        db.session.delete(payment)
+        db.session.commit()
+        return jsonify({'message': 'Payment deleted successfully'}), 200
+    return jsonify({'message': 'Payment not found'}), 404
