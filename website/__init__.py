@@ -25,8 +25,7 @@ def create_app():
         "origins": [
             "http://localhost:3000",
             "http://127.0.0.1:3000",
-            "https://shrey-finance.toystackapp.net",
-            getenv('FRONTEND_URL')
+            "https://shrey-finance.toystackapp.net"
         ],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
