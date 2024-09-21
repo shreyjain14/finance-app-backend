@@ -22,7 +22,7 @@ def create_app():
     jwt.init_app(app)
 
     cors.init_app(app, resources={r"/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
+        "origins": ["http://localhost:3000", "http://127.0.0.1:3000", getenv('FRONTEND_URL')],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
         "supports_credentials": True  # If you're using cookies or authentication
