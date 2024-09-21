@@ -43,10 +43,12 @@ def get_payments():
     return jsonify(payment_list), 200
 
 
-@api_payment.route('/delete/<id>', methods=['DELETE'])
+@api_payment.route('/delete', methods=['DELETE'])
 @jwt_required()
-def delete_payment(id):
-    payment = Payments.query.get(id)
+def delete_payment():
+    data = request.get_json()
+
+    payment = Payments.query.get(data.get('id'))
     if payment:
         db.session.delete(payment)
         db.session.commit()
